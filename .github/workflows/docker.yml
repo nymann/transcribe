@@ -2,11 +2,15 @@ name: Docker Build and Push
 
 on:
   push:
-    branches: [master]
+    branches:
+      - master
+      - main
     tags:
       - "v*"
   pull_request:
-    branches: [master]
+    branches:
+      - master
+      - main
 
 jobs:
   docker-build:
@@ -23,7 +27,8 @@ jobs:
         id: meta
         uses: docker/metadata-action@v4
         with:
-          images: |transcribe
+          images:
+            nymann/transcribe
           tags: |
             type=ref,event=branch
             type=ref,event=pr
